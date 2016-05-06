@@ -10,16 +10,16 @@ describe('The Category API', function(){
 
 	var server;
 	var Category;
+	
 
 	before(function(){
 		var app = express();
 
 		//Bootstrap Server
-		models = require("./../models/model")(wagner);
-		app.use(require('./../srv/api')(wagner));
+		models = require('../models/model')(wagner);
+		app.use(require('../srv/api')(wagner));
 
 		server = app.listen(3000);
-		console.log("in ascolto");
 		//make Category model available in the tests
 		Category = models.Category;
 	});
@@ -30,7 +30,7 @@ describe('The Category API', function(){
 	});
 
 	beforeEach(function(done){
-		//Make shure categorieas are empty before each state
+		//Make sure categorieas are empty before each state
 		
 		Category.remove({}, function(error){
 			assert.ifError(error);
@@ -49,7 +49,7 @@ describe('The Category API', function(){
 			var url = URL_ROOT + '/category/id/Electronics';
 			// Faccio una chiamata a 
 			// http://localhost:3000/category/id/Electronics
-done();
+
 			superagent.get(url, function(error,res){
 
 				Console.log('effettuata la get di '+ url)
@@ -60,10 +60,10 @@ done();
 				// Mi assicuro che il risultato sia {_id : 'Electronics'}
 				assert.doesNotThrow(function(){
 					result = JSON.parse(res.text);
-u				});
+				});
 				assert.ok(result.category);
 				assert.equal(result.category._id, 'Electronics');
-				
+				done();				
 			});
 		});
 	});

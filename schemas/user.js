@@ -14,7 +14,10 @@ var userSchema = {
 		}
 	},
 	data:{
-		oauth{type:string, required:true},
+		oauth:{
+			type:String, 
+			required:true
+		},
 		cart:[{
 			product: {
 				type: mongoose.Schema.Types.ObjectId
@@ -27,6 +30,7 @@ var userSchema = {
 		}],
 
 	}
-}
+};
 
 module.exports= new mongoose.Schema(userSchema);
+module.exports.userSchema = userSchema;

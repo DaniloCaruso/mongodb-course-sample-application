@@ -35,6 +35,7 @@ var productSchema = {
 
 var schema = new mongoose.Schema(productSchema);
 
+schema.index({name : 'text'});
 
 var currencySymbols = {
 	'USD' : '$',
